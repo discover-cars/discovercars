@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using discovercars_email.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using discovercars_email.Models;
+using System.Diagnostics;
 
 namespace discovercars_email.Controllers
 {
@@ -24,6 +21,19 @@ namespace discovercars_email.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult EnviarDadosCadastro(IFormCollection form)
+        {
+            var interesse = form["interesse"];
+            var nome = form["nome"];
+            var email = form["email-usu"];
+            var endereco = form["endereco"];
+            var bairro = form["bairro"];
+            var telefone = form["telefone"];
+            var celular = form["celular"];
+            
+            return new EmptyResult();
         }
     }
 }
