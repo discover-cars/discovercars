@@ -1,7 +1,10 @@
 ﻿using discovercars_email.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Diagnostics;
+using System.Net;
+using System.Net.Mail;
 
 namespace discovercars_email.Controllers
 {
@@ -32,8 +35,34 @@ namespace discovercars_email.Controllers
             var bairro = form["bairro"];
             var telefone = form["telefone"];
             var celular = form["celular"];
-            
-            return new EmptyResult();
+
+
+            var mail = new MailMessage();
+
+            mail.From = new MailAddress(email);
+            mail.To.Add("discover.cars.br@gmail.com");
+            mail.Subject = string.Format("Novo Cadastro - {0}", nome);
+            mail.Body = string.Format("Interesse: {0} \r\nNome: {1} \r\nEndereço: {2} \r\nBairro: {3} \r\nTelefone: {4} \r\nCelular: {5}",
+                interesse, nome, endereco, bairro, telefone, celular);
+
+            using (var smtp = new SmtpClient("smtp.gmail.com"))
+            {
+                smtp.EnableSsl = true;
+                smtp.Port = 587;
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtp.UseDefaultCredentials = true;
+                smtp.Credentials = new NetworkCredential("discover.cars.br@gmail.com", "3Qw!IB1lNm");
+
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+
+            return View("Index", new SucessViewModel { Mensagem = "E-mail gravado com sucesso" });
         }
     }
 }

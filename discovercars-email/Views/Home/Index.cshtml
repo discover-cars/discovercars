@@ -2,6 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
+@model SucessViewModel
+
+@{
+    
+    if (Model != null)
+    {
+    <script>
+        alert("@Model.Mensagem");
+        window.location.replace("/");   
+    </script>
+
+    }
+}
+
 <section class="header8 cid-rOrszG6VnP mbr-fullscreen mbr-parallax-background" id="header8-a">
     <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(91, 104, 107);">
     </div>
