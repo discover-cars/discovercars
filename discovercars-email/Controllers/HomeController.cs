@@ -51,7 +51,7 @@ namespace discovercars_email.Controllers
                 smtp.Port = 587;
                 smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                 smtp.UseDefaultCredentials = true;
-                smtp.Credentials = new NetworkCredential("discover.cars.br@gmail.com", "3Qw!IB1lNm");
+                smtp.Credentials = new NetworkCredential("xpto@gmail.com", "xpto");
 
                 try
                 {
