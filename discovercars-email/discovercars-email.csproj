@@ -12,11 +12,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
-
-  <ItemGroup>
-    <Folder Include="wwwroot\assets\images\" />
-    <Folder Include="wwwroot\assets\tether\" />
-    <Folder Include="wwwroot\assets\theme\css\" />
-  </ItemGroup>
-
 </Project>

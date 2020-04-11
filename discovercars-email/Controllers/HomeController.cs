@@ -30,11 +30,13 @@ namespace discovercars_email.Controllers
         {
             var interesse = form["interesse"];
             var nome = form["nome"];
-            var email = form["email-usu"];
-            var endereco = form["endereco"];
-            var bairro = form["bairro"];
-            var telefone = form["telefone"];
+            var empresa = form["empresa"];
+            var email = form["email"];
             var celular = form["celular"];
+            var estado = form["estado"];
+            var cidade = form["cidade"];
+            var bairro = form["bairro"];
+            var cep = form["cep"];
 
 
             var mail = new MailMessage();
@@ -42,8 +44,8 @@ namespace discovercars_email.Controllers
             mail.From = new MailAddress(email);
             mail.To.Add("discover.cars.br@gmail.com");
             mail.Subject = string.Format("Novo Cadastro - {0}", nome);
-            mail.Body = string.Format("Interesse: {0} \r\nNome: {1} \r\nEndereço: {2} \r\nBairro: {3} \r\nTelefone: {4} \r\nCelular: {5}",
-                interesse, nome, endereco, bairro, telefone, celular);
+            mail.Body = string.Format("Interesse: {0} \r\nNome: {1} \r\nEmpresa: {2} \r\nEmail: {3} \r\nCelular: {4} \r\nEstado: {5} \r\nCidade: {6} \r\nbairro: {7} \r\nCep: {8}",
+                interesse, nome, empresa, email, celular, estado, cidade, bairro, cep);
 
             using (var smtp = new SmtpClient("smtp.gmail.com"))
             {
